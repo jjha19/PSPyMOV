@@ -30,6 +30,15 @@ public class CuentaBancaria {
         this.saldo = saldo;
     }
 
+    public void transferir(CuentaBancaria cuentaDestino, int cantidad) {
+        synchronized (this) {
+            synchronized (cuentaDestino) {
+                this.saldo -= cantidad;
+                cuentaDestino.setSaldo(cantidad);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria();
         for (int i = 0; i < 100; i++) {
@@ -68,12 +77,38 @@ public class CuentaBancaria {
 
         }
 
-try {
+        try {
             Thread.sleep(1000); // Esperar a que todos los hilos terminen
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         System.out.println("Saldo final con sincronización bloque synchronized: " + cuenta.getSaldo());
 
+    }
+
+    public static void main2(String[] args) {
+        CuentaBancaria cuenta1 = new CuentaBancaria();
+        CuentaBancaria cuenta2 = new CuentaBancaria();
+        cuenta1.setSaldo(1000);
+        Thread hilo1 = new Thread(
+                () -> {
+                    cuenta1.transferir(cuenta2, 500);
+                }
+        );
+        Thread hilo2 = new Thread(
+                () -> {
+                    cuenta2.transferir(cuenta1, 300);
+                }
+        );
+        hilo1.start();
+        hilo2.start();
+        try {
+            hilo1.join();
+            hilo2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Saldo final de la cuenta 1: " + cuenta1.getSaldo());
+        System.out.println("Saldo final de la cuenta 2: " + cuenta2.getSaldo());
     }
 }
