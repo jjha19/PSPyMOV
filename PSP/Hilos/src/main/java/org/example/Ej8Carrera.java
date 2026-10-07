@@ -37,17 +37,14 @@ public class Ej8Carrera {
                             "Corredor " + corredor + " está listo."
                     );
 
-                    // Avisamos de que estamos preparados
                     preparados.countDown();
 
-                    // Esperamos a que todos estén preparados
                     preparados.await();
 
                     System.out.println(
                             "Corredor " + corredor + " espera la salida..."
                     );
 
-                    // Esperamos al juez
                     salida.await();
 
                     System.out.println(
