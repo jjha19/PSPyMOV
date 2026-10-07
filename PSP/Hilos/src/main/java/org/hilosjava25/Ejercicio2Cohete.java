@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 public class Ejercicio2Cohete {
     public  static void main(String[] args) {

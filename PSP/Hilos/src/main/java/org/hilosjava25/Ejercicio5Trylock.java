@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

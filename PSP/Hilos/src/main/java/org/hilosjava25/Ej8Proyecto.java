@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ThreadLocalRandom;
 

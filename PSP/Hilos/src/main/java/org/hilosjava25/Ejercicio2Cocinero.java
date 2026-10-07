@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 public class Ejercicio2Cocinero {
     static void main() {

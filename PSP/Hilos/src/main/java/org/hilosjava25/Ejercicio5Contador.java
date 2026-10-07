@@ -1,8 +1,6 @@
-package org.example;
+package org.hilosjava25;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Ejercicio5Contador {
     static void main(String[] args) {

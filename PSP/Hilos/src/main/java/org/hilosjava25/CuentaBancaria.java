@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 public class CuentaBancaria {
     private int saldo = 0;

@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;

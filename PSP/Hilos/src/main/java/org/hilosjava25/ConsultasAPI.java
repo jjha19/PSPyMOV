@@ -1,4 +1,4 @@
-package org.example;
+package org.hilosjava25;
 
 import java.util.*;
 import java.util.concurrent.*;

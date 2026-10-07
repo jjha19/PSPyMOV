@@ -1,8 +1,6 @@
-package org.example;
+package org.hilosjava25;
 
-public class Ejercicio1Runnable implements Runnable {
-
-    @Override
+public class Ejercicio1 extends Thread {
     public void run() {
         try {
             for (int i = 1; i <= 4; i++) {
@@ -16,13 +14,14 @@ public class Ejercicio1Runnable implements Runnable {
 
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
-            Thread hilo = new Thread(new Ejercicio1Runnable());
-            hilo.start();
+            Ejercicio1 ej = new Ejercicio1();
+            ej.start();
             try {
-                hilo.join();
+                ej.join();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
+
     }
 }
