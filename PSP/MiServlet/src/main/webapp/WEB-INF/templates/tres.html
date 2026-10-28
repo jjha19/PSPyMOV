@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tres en raya</title>
 </head>
 <body>
-    <h1 th:text="${fila1}">Contenido</h1>
-    <h1 th:text="${fila2}">Contenido</h1>
-    <h1 th:text="${fila3}">Contenido</h1>
+<h1 th:text="${fila1}">Contenido</h1>
+<h1 th:text="${fila2}">Contenido</h1>
+<h1 th:text="${fila3}">Contenido</h1>
+
+<audio id="musica" loop controls>
+    <source th:src="@{/audio/bandaSonora.mp3}" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+<button onclick="document.getElementById('musica').play()">
+    Reproducir música
+</button>
 </body>
 </html>
