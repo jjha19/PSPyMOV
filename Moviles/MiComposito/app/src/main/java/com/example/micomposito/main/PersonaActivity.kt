@@ -1,4 +1,4 @@
-package com.example.micomposito
+package com.example.micomposito.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

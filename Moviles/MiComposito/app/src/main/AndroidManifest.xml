@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiComposito">
         <activity
-            android:name=".PersonaActivity"
+            android:name=".main.PersonaActivity"
             android:exported="true"
             android:label="Personas"
             android:theme="@style/Theme.MiComposito"

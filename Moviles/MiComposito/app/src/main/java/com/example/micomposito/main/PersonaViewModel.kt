@@ -1,5 +1,7 @@
-package com.example.micomposito
+package com.example.micomposito.main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.micomposito.domain.Persona
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,8 +11,21 @@ import kotlinx.coroutines.flow.update
 
 class PersonaViewModel : ViewModel() {
 
-    private val _state = MutableStateFlow(PersonaState())
-    val state: StateFlow<PersonaState> = _state.asStateFlow()
+    private val _state = MutableLiveData(PersonaState())
+    val state: LiveData<PersonaState> = _state
+
+    init {
+        loadPersonas()
+    }
+
+    fun loadPersonas() {
+//        _state.value = PersonaState(
+//            nombre = "Juan",
+//            apellido = "Pérez",
+//            personas = listOf(Persona("María", "Gómez"))
+//        )
+        _state.value = state.value.copy(personas = personaRepository.getAllPersonas())
+    }
 
     fun onNombreChange(nombre: String) {
         _state.update { it.copy(nombre = nombre) }
