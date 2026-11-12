@@ -13,6 +13,11 @@ public final class UrlConstants {
     // URLs de los servlets
     public static final String URL_HOLA = "/hola";
     public static final String URL_ADIVINA = "/adivina";
+    public static final String URL_INICIO_TORNEO = "/inicioTorneo";
+    public static final String URL_JUGAR = "/jugar";
+    public static final String URL_ESTADISTICAS = "/estadisticas";
+    public static final String URL_BORRAR_JUGADOR = "/borrarJugador";
+    public static final String URL_FIN_TORNEO = "/finTorneo";
 
     // Rutas de plantillas Thymeleaf
     public static final String TEMPLATE_PREFIX = "/WEB-INF/templates/";
