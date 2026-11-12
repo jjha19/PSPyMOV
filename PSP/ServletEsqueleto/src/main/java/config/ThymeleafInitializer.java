@@ -8,6 +8,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
+import java.net.MalformedURLException;
+
 @WebListener
 public class ThymeleafInitializer implements ServletContextListener {
 
@@ -26,6 +28,18 @@ public class ThymeleafInitializer implements ServletContextListener {
 
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
+
+        System.out.println("Context path: " +
+                servletContext.getContextPath());
+
+        try {
+            System.out.println("Template exists: " +
+                    servletContext.getResource(
+                            "/WEB-INF/templates/iniciador.html"
+                    ));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
 
         servletContext.setAttribute(ThymeleafConstants.TEMPLATE_ENGINE_ATTR, templateEngine);
     }
