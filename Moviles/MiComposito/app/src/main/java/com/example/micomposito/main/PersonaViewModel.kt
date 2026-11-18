@@ -24,27 +24,26 @@ class PersonaViewModel : ViewModel() {
 //            apellido = "Pérez",
 //            personas = listOf(Persona("María", "Gómez"))
 //        )
-        _state.value = state.value.copy(personas = personaRepository.getAllPersonas())
+        _state.value = state.value?.copy(personas = personaRepository.getAllPersonas())
     }
 
     fun onNombreChange(nombre: String) {
-        _state.update { it.copy(nombre = nombre) }
+        _state.value = _state.value?.copy(nombre = nombre)
     }
 
     fun onApellidoChange(apellido: String) {
-        _state.update { it.copy(apellido = apellido) }
+        _state.value = _state.value?.copy(apellido = apellido)
     }
 
     fun onAddPersona() {
         val state = _state.value
+        if (state == null) return
         if (state.nombre.isBlank() || state.apellido.isBlank()) return
 
-        _state.update {
-            it.copy(
-                nombre = "",
-                apellido = "",
-                personas = it.personas + Persona(state.nombre.trim(), state.apellido.trim()),
-            )
-        }
+        _state.value = _state.value?.copy(
+            nombre = "",
+            apellido = "",
+            personas = _state.value?.personas.orEmpty() + Persona(state.nombre.trim(), state.apellido.trim()),
+        )
     }
 }
